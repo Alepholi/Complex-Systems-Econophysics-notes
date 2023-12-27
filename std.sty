@@ -1,0 +1,94 @@
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{std}[2013/01/13 Custom Package]
+
+\definecolor{lightgreen}{HTML}{90EE90}
+\renewcommand{\arg}[1]{_{(#1)}}
+\newcommand{\boxedeq}[2]{\begin{empheq}[box={\fboxsep=6pt\fbox}]{align}\label{#1}#2\end{empheq}}
+\newcommand{\coloredeq}[2]{\begin{empheq}[box=\colorbox{lightgreen}]{align}\label{#1}#2\end{empheq}}
+\usetikzlibrary{shapes.geometric,calc,matrix,arrows,snakes,shapes,patterns}
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposizione}
+\newtheorem{post}[thm]{Postulato}
+\newtheorem{cor}[thm]{Corollario}
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[section]
+\newtheorem{exmp}{Esempio}[section]
+\newtheorem{prob}{Problema}[section]
+\newtheorem{hint}{Suggerimento}[section]
+\newtheorem{sol}{Soluzione}[section]
+\newtheorem*{obs}{Osservazione}
+\newcommand{\Op}[1]{\mathcal{#1}}
+\newcommand{\Dhil}{\sigma(\mathscr{H})}
+\newcommand{\Hil}{\mathscr{H}}
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\Aop}{\mathcal{A}}
+\newcommand{\Bop}{\mathcal{B}}
+\newcommand{\Uop}{\mathcal{U}}
+\newcommand{\Jop}{\mathcal{J}}
+\newcommand{\Kop}{\mathcal{K}}
+\newcommand{\Mop}{\mathcal{M}}
+\newcommand{\Eop}{\mathcal{E}}
+\newcommand{\Ker}{\mathrhm{Ker}}
+\newcommand{\ifandonlyif}{\Longleftrightarrow}
+\newcommand{\dagg}{^\dagger}
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\ave}[1]{\Big\langle#1\Big\rangle }
+\newcommand{\kst}{\ket{\Psi}}
+\newcommand{\lkst}{\ket{\psi}}
+\newcommand{\likst}{\ket{\psi_i}}
+\newcommand{\lbst}{\bra{\psi}}
+\newcommand{\libst}{\bra{\psi_i}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+\newcommand{\ikst}{\ket{\Psi_i}}
+\newcommand{\zkst}{\ket{0}}
+\newcommand{\okst}{\ket{1}}
+\newcommand{\zbst}{\bra{0}}
+\newcommand{\obst}{\bra{1}}
+\newcommand{\bst}{\bra{\Psi}}
+\newcommand{\ibst}{\bra{\Psi_i}}
+\newcommand{\Ast}{\rho_A}
+\newcommand{\Bst}{\rho_B}
+\newcommand{\Bhil}{\mathscr{H}_B}
+\newcommand{\Var}{\mathrm{Var}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\openE}{\mathord{\mathchoice
+		{\do@openE\tf@size}
+		{\do@openE\tf@size}
+		{\do@openE\sf@size}
+		{\do@openE\ssf@size}
+}}
+\newcommand{\econg}{~\text{e}~}
+\newcommand{\Shil}{\mathscr{H}_S}
+\newcommand{\Ahil}{\mathscr{H}_A}
+\newcommand{\unit}{1\!\!1}
+\newcommand{\pos}{\vec{x}}
+\newcommand{\rpos}{\vec{r}}
+\newcommand{\shcro}{Schrödinger }
+\newcommand{\mom}{\vec{p}}
+\newcommand{\bol}{k_b }
+\newcommand{\tem}{k_b T }
+
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+{
+	(
+	\alec_cycle:nn { #1 } { #2 }
+	)
+}
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+{
+	\seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+	\seq_use:Nn \l_alec_cycle_seq { #1 }
+}
+\ExplSyntaxOff
+\newcommand{\efield}{\vec{E}}
+\newcommand{\qpl}{2\pi \hbar}
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+\endinput
